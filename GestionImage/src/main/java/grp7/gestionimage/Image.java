@@ -20,8 +20,8 @@ public class Image {
     private int hauteur;
     private int largeur;
     private String commentaire;
-    private ArrayList listeCases;
-    private ArrayList listeFinLigne;
+    private ArrayList<Integer> listeCases;
+    private ArrayList<Integer> listeFinLigne;
             
     private final int valeurMax=255;
 
@@ -88,12 +88,26 @@ public class Image {
         
         try {
             FileWriter writer = new FileWriter(this.nom);
-
-            // Initialisation des premières lignes
-            writer.write("P2");
-            writer.write("# "+this.commentaire);
-            writer.write(this.hauteur + this.largeur);
+            int compteur = 0;
+            int compteurLigne=0;
             
+            // Initialisation des premières lignes
+            writer.write("P2"+"\r\n");
+            writer.write("# "+this.commentaire+"\r\n");
+            writer.write(this.hauteur +"  "+ this.largeur+"\r\n");
+            for (int nbr:this.listeCases){
+                
+                while(compteur<(this.listeFinLigne.get(compteurLigne))){
+                    writer.write(listeCases.get(compteur) + "  ");
+                    compteur++;
+                    compteurLigne++;
+                }
+                
+                // Fin de la ligne, on passe une ligne
+                writer.write("\r\n");
+                compteurLigne = 0;
+            }
+              
         } catch (IOException ex) {
             System.getLogger(Image.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
