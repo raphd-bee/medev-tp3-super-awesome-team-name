@@ -5,12 +5,18 @@
 package grp7.gestionimage;
 
 import java.util.ArrayList;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  *
  * @author vdufo
  */
 public class Image {
+    
+    private String nom;
+    
     private int hauteur;
     private int largeur;
     private String commentaire;
@@ -19,12 +25,21 @@ public class Image {
             
     private final int valeurMax=255;
 
-    public Image(int hauteur, int largeur, String commentaire, ArrayList listeCases, ArrayList listeFinLigne) {
+    public Image(String nom,int hauteur, int largeur, String commentaire, ArrayList listeCases, ArrayList listeFinLigne) {
+        this.nom = nom;
         this.hauteur = hauteur;
         this.largeur = largeur;
         this.commentaire = commentaire;
         this.listeCases = listeCases;
         this.listeFinLigne = listeFinLigne;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public int getHauteur() {
@@ -69,8 +84,19 @@ public class Image {
     
     public void ecritureImage(){
         // Creation d'un fichier texte
+        File fichier = new File(this.nom);
         
-        //
+        try {
+            FileWriter writer = new FileWriter(this.nom);
+
+            // Initialisation des premières lignes
+            writer.write("P2");
+            writer.write("# "+this.commentaire);
+            writer.write(this.hauteur + this.largeur);
+            
+        } catch (IOException ex) {
+            System.getLogger(Image.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
     }
 }
  
