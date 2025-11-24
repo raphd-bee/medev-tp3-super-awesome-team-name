@@ -112,5 +112,57 @@ public class Image {
             System.getLogger(Image.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
     }
+
+
+        public Image lireImage(String txtFilePath) throws IOException{
+        
+        ArrayList<int[]> lines = new ArrayList<>();
+        
+        
+        try (BufferedReader br = new BufferedReader(new FileReader(txtFilePath))) {
+
+            // Lire la première ligne = chemin ou nom d'image
+            String imagePath = br.readLine();
+            String ligne;
+            int j=0;
+            
+            
+            ligne = br.readLine();
+                
+            
+            if ((ligne = br.readLine()) != null){
+                this.commentaire=ligne;
+            }
+            if ((ligne = br.readLine()) != null){
+                String[] parts = ligne.trim().split("\\s+");
+                this.hauteur = Integer.parseInt(parts[0]);
+                this.largeur = Integer.parseInt(parts[1]);
+            }
+            
+                    
+            while ((ligne = br.readLine()) != null) {
+                String[] parts = ligne.trim().split("\\s+");
+                for (String nombre : parts){
+                    this.listeCases.add(Integer.parseInt(nombre));
+                    this.listeFinLigne.add(parts.length);
+                }
+                
+                
+                
+                
+            return this;
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+        }
+        return this;
+        
+    }
 }
  
