@@ -9,5 +9,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>24</maven.compiler.release>
         <exec.mainClass>grp7.gestionimage.GestionImage</exec.mainClass>
+        <sonar.organization>ec-nantes</sonar.organization>
     </properties>
+    
 </project>
