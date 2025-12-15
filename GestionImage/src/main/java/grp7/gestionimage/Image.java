@@ -81,6 +81,14 @@ public class Image {
     public void setListeFinLigne(ArrayList listeFinLigne) {
         this.listeFinLigne = listeFinLigne;
     }
+
+    public void afficher(){
+        for(int i in this.listeCases){
+            System.out.println("indice"+i);
+        }
+        
+        
+    }
     
 
 }
