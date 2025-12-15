@@ -10,6 +10,7 @@
         <maven.compiler.release>24</maven.compiler.release>
         <exec.mainClass>grp7.gestionimage.GestionImage</exec.mainClass>
         <sonar.organization>ec-nantes</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
     
 </project>
